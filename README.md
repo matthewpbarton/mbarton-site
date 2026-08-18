@@ -8,7 +8,7 @@ index.html      all page content
 styles.css      design system (Crimson Text, pale lavender ground)
 main.js         newsletter signup + footer year
 favicon.svg
-images/         hero image + MB & Co. logo mark
+images/         hero image + MB & Co. logo mark (favicon only)
 assets-source/  original 2420px PNG — git-ignored, not deployed
 ```
 
@@ -18,7 +18,7 @@ assets-source/  original 2420px PNG — git-ignored, not deployed
 - Newsletter is now a **real signup form** instead of a link straight to LinkedIn.
 - `matthew@mbarton.co.uk` is a working `mailto:` link (was `https://matthew@mbarton.co.uk/`).
 - Hero image 4.6MB → 206KB.
-- MB & Co. logo mark added top-left, and used as the favicon/touch icon.
+- MB & Co. logo mark used as the favicon/touch icon (not shown on the page).
 - Layout proportions match the Gamma original (content column ~1040px).
 - Added page title, meta description, Open Graph tags, favicon, skip link,
   focus states, and proper heading hierarchy.
@@ -75,3 +75,24 @@ the number is worth leading with. Rough threshold: four digits.
 The page is one flat `#ECECF3` — the tone the Gamma original used behind its card.
 To go lighter (the tone the card itself was), change `--bg` in `styles.css` to `#FAFAFC`.
 Shaan's, for reference, is a warm `#F5F3EC`.
+
+## Type scale
+
+Measured off the live Gamma site at a 1280px viewport and matched exactly:
+
+| Element            | Size    | Weight | Style  | Line height | Colour   |
+|--------------------|---------|--------|--------|-------------|----------|
+| Name               | 27px    | 700    | —      | 33.75px     | #1B1B27  |
+| Tagline            | 27px    | 400    | italic | 33.75px     | #1B1B27  |
+| Section titles     | 22.5px  | 700    | italic | 28.125px    | #1B1B27  |
+| Essay/list links   | 18px    | 700    | —      | 28.8px      | #1B1B27  |
+| Body               | 18px    | 400    | —      | 28.8px      | #3C3939  |
+| Newsletter title   | 36px    | 400    | —      | 45px        | #1B1B27  |
+| Privacy line       | 14.4px  | 400    | italic | 23.04px     | #3C3939  |
+
+Hero image renders 383px wide, as Gamma. Height comes out 222px against Gamma's 223px —
+a rounding artefact of the source image's aspect ratio, not worth distorting the photo for.
+
+Headings use `clamp()` because Gamma scales them with the viewport (at 353px they drop to
+22.5/19.8/27px). Body stays 18px at every width, as it does on Gamma. The `vw` middle terms
+are set so each lands exactly on its Gamma value at 1280px.

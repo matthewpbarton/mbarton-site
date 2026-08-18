@@ -58,19 +58,6 @@ body {
   padding: clamp(2rem, 6vw, 4.5rem) clamp(1.25rem, 5vw, 4rem);
 }
 
-/* ---------- logo ---------- */
-
-.brand {
-  max-width: var(--measure);
-  margin: 0 auto clamp(2.5rem, 6vw, 4rem);
-}
-
-.brand-mark {
-  display: block;
-  width: 4.25rem;
-  height: 4.25rem;
-}
-
 /* ---------- hero ---------- */
 
 .hero { text-align: center; }
@@ -78,15 +65,16 @@ body {
 .hero-img {
   display: block;
   width: 100%;
-  max-width: 24rem;
+  max-width: 23.9375rem;   /* 383px, as Gamma */
   height: auto;
   margin: 0 auto;
   border-radius: 10px;
 }
 
 .hero-name {
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-size: clamp(1.40625rem, 2.109375vw, 1.6875rem);   /* 22.5px → 27px */
   font-weight: 700;
+  line-height: 1.25;
   color: var(--ink-strong);
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -97,8 +85,10 @@ body {
   max-width: var(--measure);
   margin: 2.5rem auto 0;
   font-style: italic;
-  font-size: 1.25rem;
-  line-height: 1.55;
+  font-weight: 400;
+  font-size: clamp(1.40625rem, 2.109375vw, 1.6875rem);   /* 22.5px → 27px */
+  line-height: 1.25;
+  color: var(--ink-strong);
   text-align: left;
 }
 
@@ -111,8 +101,10 @@ body {
 }
 
 .section-title {
-  font-size: 1.25rem;
+  font-size: clamp(1.2375rem, 1.7578125vw, 1.40625rem);  /* 19.8px → 22.5px */
+  font-style: italic;
   font-weight: 700;
+  line-height: 1.25;
   color: var(--ink-strong);
   margin: 0 0 1.25rem;
 }
@@ -124,6 +116,13 @@ body {
 }
 
 .list li + li { margin-top: 0.85rem; }
+
+.credit {
+  color: var(--ink);
+  opacity: 0.72;
+  white-space: nowrap;
+}
+.credit a { font-weight: 400; }
 
 .note { margin: 1.5rem 0 0; }
 
@@ -149,8 +148,9 @@ a:focus-visible {
 .signup { margin-top: 1.75rem; }
 
 .signup-title {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: clamp(1.6875rem, 2.8125vw, 2.25rem);     /* 27px → 36px */
+  font-weight: 400;
+  line-height: 1.25;
   color: var(--ink-strong);
   margin: 0 0 0.85rem;
 }
@@ -168,7 +168,7 @@ a:focus-visible {
   flex: 1 1 16rem;
   min-width: 0;
   font-family: inherit;
-  font-size: 1.05rem;
+  font-size: 1.125rem;
   padding: 0.55rem 0.1rem;
   color: var(--ink);
   background: transparent;
@@ -186,8 +186,8 @@ a:focus-visible {
 .signup-form button {
   flex: 0 0 auto;
   font-family: inherit;
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.125rem;
+  font-weight: 600;
   padding: 0.72rem 0;
   color: var(--ink-strong);
   background: none;
@@ -212,13 +212,14 @@ a:focus-visible {
 
 .signup-count {
   margin: 0.9rem 0 0;
-  font-size: 1.05rem;
+  font-size: 1.125rem;
 }
 
 .signup-privacy {
-  margin: 0.5rem 0 0;
-  font-size: 0.95rem;
-  opacity: 0.7;
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;        /* 14.4px, as Gamma */
+  font-style: italic;
+  line-height: 1.6;
 }
 
 /* ---------- footer ---------- */
