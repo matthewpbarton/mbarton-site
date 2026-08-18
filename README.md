@@ -22,6 +22,9 @@ assets-source/  original 2420px PNG — git-ignored, not deployed
 - Layout proportions match the Gamma original (content column ~1040px).
 - Added page title, meta description, Open Graph tags, favicon, skip link,
   focus states, and proper heading hierarchy.
+- One flat background — the white card-on-lavender "square within a square" is gone.
+  There is now exactly one painted surface on the page (`body`).
+- Signup is seamless: transparent underlined field and text button, no container.
 
 ## One thing that needs you
 
@@ -57,3 +60,18 @@ Pushing to `main` triggers a Vercel deploy once the repo is connected.
 ```bash
 python3 -m http.server 4321 --directory .
 ```
+
+## Subscriber count
+
+Shaan Puri's site leads its signup with "Join 109,050 entrepreneurs on my email list."
+That works because the number is the proof. At ~200 it isn't yet — it's the one figure
+a cold reader anchors on, and the copy stands up fine without it.
+
+There's a commented-out `.signup-count` line in `index.html` ready to uncomment when
+the number is worth leading with. Rough threshold: four digits.
+
+## Background colour
+
+The page is one flat `#ECECF3` — the tone the Gamma original used behind its card.
+To go lighter (the tone the card itself was), change `--bg` in `styles.css` to `#FAFAFC`.
+Shaan's, for reference, is a warm `#F5F3EC`.
