@@ -9,7 +9,8 @@
   --ink-strong: #1B1B27;
   --rule: rgba(27, 27, 39, 0.12);
   --serif: "Crimson Text", Georgia, "Times New Roman", serif;
-  --measure: 44rem;
+  --measure: 65rem;
+  --navy: #19232F;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -53,10 +54,23 @@ body {
 }
 
 .card {
-  max-width: 58rem;
+  max-width: 80rem;
   margin: 0 auto;
   background: var(--card);
   padding: clamp(2rem, 6vw, 4.5rem) clamp(1.25rem, 5vw, 4rem);
+}
+
+/* ---------- logo ---------- */
+
+.brand {
+  max-width: var(--measure);
+  margin: 0 auto clamp(2.5rem, 6vw, 4rem);
+}
+
+.brand-mark {
+  display: block;
+  width: 4.25rem;
+  height: 4.25rem;
 }
 
 /* ---------- hero ---------- */
@@ -66,7 +80,7 @@ body {
 .hero-img {
   display: block;
   width: 100%;
-  max-width: 26rem;
+  max-width: 24rem;
   height: auto;
   margin: 0 auto;
   border-radius: 10px;

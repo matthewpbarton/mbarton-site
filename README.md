@@ -8,7 +8,7 @@ index.html      all page content
 styles.css      design system (Crimson Text, pale lavender ground)
 main.js         newsletter signup + footer year
 favicon.svg
-images/         hero image (1400px JPEG, 206KB)
+images/         hero image + MB & Co. logo mark
 assets-source/  original 2420px PNG — git-ignored, not deployed
 ```
 
@@ -17,8 +17,9 @@ assets-source/  original 2420px PNG — git-ignored, not deployed
 - "Made with Gamma" badge gone.
 - Newsletter is now a **real signup form** instead of a link straight to LinkedIn.
 - `matthew@mbarton.co.uk` is a working `mailto:` link (was `https://matthew@mbarton.co.uk/`).
-- Reading measure tightened from ~1035px to ~700px.
 - Hero image 4.6MB → 206KB.
+- MB & Co. logo mark added top-left, and used as the favicon/touch icon.
+- Layout proportions match the Gamma original (content column ~1040px).
 - Added page title, meta description, Open Graph tags, favicon, skip link,
   focus states, and proper heading hierarchy.
 
