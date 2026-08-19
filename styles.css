@@ -145,15 +145,7 @@ a:focus-visible {
 
 /* ---------- newsletter signup ---------- */
 
-.signup { margin-top: 1.75rem; }
-
-.signup-title {
-  font-size: clamp(1.5rem, 2.34375vw, 1.875rem);      /* 24px → 30px */
-  font-weight: 400;
-  line-height: 1.25;
-  color: var(--ink-strong);
-  margin: 0 0 0.85rem;
-}
+.signup { margin-top: 1.5rem; }
 
 .signup-body {
   margin: 0;
@@ -215,9 +207,10 @@ a:focus-visible {
 .signup-status[data-state="error"] { color: #9B2C2C; }
 
 .signup-count {
-  margin: 0.65rem 0 0;
+  margin: 0.35rem 0 0;
   font-size: 1rem;
 }
+.signup-count strong { font-weight: 700; }
 
 .signup-privacy {
   margin: 0.75rem 0 0;
@@ -232,10 +225,15 @@ a:focus-visible {
   max-width: var(--measure);
   margin: 0 auto;
   padding-top: clamp(3rem, 7vw, 4.5rem);
-  font-size: 0.95rem;
-  opacity: 0.65;
+  font-size: 1rem;
 }
 .footer p { margin: 0; }
+
+.footer-legal {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
