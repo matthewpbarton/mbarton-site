@@ -1,17 +1,17 @@
 /* MB&Co. — newsletter signup
  *
  * ─────────────────────────────────────────────────────────────────────────
- * TO GO LIVE WITH BEEHIIV: set BEEHIIV_SUBSCRIBE_URL below to your
- * publication's subscribe URL, e.g. "https://iterations.beehiiv.com/subscribe"
- * (Beehiiv → Settings → Publication → Web, or just the /subscribe path of
- * your public site). That is the only change needed.
+ * Posts to Beehiiv with the typed address carried over as ?email=, so the
+ * subscriber only has to confirm rather than type it twice.
  *
- * While it is left empty the form stays fully usable and falls back to the
- * LinkedIn newsletter, which is where subscribers go today — so there is no
- * dead end on the page in the meantime.
+ * NOTE: this is still Beehiiv's auto-generated subdomain. When the slug is
+ * changed to something readable (Settings → Publication → Web), update the
+ * URL below — it is the only place it appears.
+ *
+ * Setting BEEHIIV_SUBSCRIBE_URL back to "" reinstates the LinkedIn fallback.
  * ─────────────────────────────────────────────────────────────────────────
  */
-const BEEHIIV_SUBSCRIBE_URL = "";
+const BEEHIIV_SUBSCRIBE_URL = "https://matthews-newsletter-2f246d.beehiiv.com/subscribe";
 
 const LINKEDIN_FALLBACK =
   "https://www.linkedin.com/newsletters/iterations-by-matthew-barton-7289678221522952192/";
