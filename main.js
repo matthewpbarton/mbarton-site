@@ -4,13 +4,13 @@
  * Posts to Beehiiv with the typed address carried over as ?email=, so the
  * subscriber only has to confirm rather than type it twice.
  *
- * NOTE: switch this to https://newsletter.mbarton.co.uk/subscribe once the
- * Beehiiv custom domain is verified. It is the only place the URL appears.
+ * Points at the Beehiiv publication on Matthew's own custom domain, so every
+ * link handed out stays on mbarton.co.uk.
  *
  * Setting BEEHIIV_SUBSCRIBE_URL back to "" reinstates the LinkedIn fallback.
  * ─────────────────────────────────────────────────────────────────────────
  */
-const BEEHIIV_SUBSCRIBE_URL = "https://iterations.beehiiv.com/subscribe";
+const BEEHIIV_SUBSCRIBE_URL = "https://newsletter.mbarton.co.uk/subscribe";
 
 const LINKEDIN_FALLBACK =
   "https://www.linkedin.com/newsletters/iterations-by-matthew-barton-7289678221522952192/";
