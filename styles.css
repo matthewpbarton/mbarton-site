@@ -162,13 +162,14 @@ a:focus-visible {
 }
 
 /* Beehiiv's loader injects a wrapper with `height: 0; overflow: hidden` and
-   relies on a postMessage from the iframe to set the real height. That message
-   is not arriving, so the form stays invisible. Override the wrapper and pin
-   the iframe to the form's own content height instead.
+   relies on a postMessage from the iframe to set the real height. The iframe
+   only ever posts `beehiiv:child-loaded` and never reports a height, so the
+   form renders invisible. Override the wrapper and pin the iframe instead.
 
-   NOTE: 150px suits the current form (measured at 135px). If the form is
-   redesigned in Beehiiv — Grow -> Subscribe Forms — re-measure and update
-   this value, or it will clip or leave a gap. */
+   NOTE: 56px suits the current slim, header-less form (measured at 50px, with
+   slack for the success message). Re-measure and update this if the form is
+   redesigned in Beehiiv — Grow -> Subscribe Forms — or it will clip or leave
+   a gap. */
 .signup-embed > div > div {
   height: auto !important;
   overflow: visible !important;
@@ -177,7 +178,7 @@ a:focus-visible {
 .signup-embed iframe {
   display: block;
   width: 100%;
-  height: 150px !important;
+  height: 56px !important;
   border: 0;
 }
 
