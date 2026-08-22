@@ -1,22 +1,15 @@
 /* MB&Co. — newsletter signup
  *
  * ─────────────────────────────────────────────────────────────────────────
- * Posts straight to the Beehiiv subscribe endpoint on Matthew's own custom
- * domain, so the reader enters their address once and never leaves the page.
+ * Hands off to Beehiiv's hosted subscribe page with the address carried in
+ * the query string. Two steps rather than one, but it genuinely works.
  *
- * The request goes out with mode:"no-cors" because Beehiiv does not send
- * CORS headers for this endpoint. The POST is delivered, but the response is
- * opaque — meaning we cannot read success or failure back. The form therefore
- * confirms optimistically. Genuine failures (already subscribed, blocked
- * address) are invisible here and only show up in Beehiiv's Audience list.
- * That is the cost of keeping the reader on the page; the alternative is
- * Beehiiv's iframe embed, which reports properly but brings its own styling.
- *
- * If the request cannot be sent at all, we fall back to the hosted subscribe
- * page rather than leaving anyone stranded.
+ * A direct POST to Beehiiv's /create endpoint was tried and silently failed
+ * — Cloudflare sits in front of it and drops cross-origin form posts. Do not
+ * reinstate that approach: it reports success without subscribing anyone.
+ * The single-step signup needs Beehiiv's own iframe embed.
  * ─────────────────────────────────────────────────────────────────────────
  */
-const BEEHIIV_CREATE_URL = "https://newsletter.mbarton.co.uk/create";
 const BEEHIIV_SUBSCRIBE_URL = "https://newsletter.mbarton.co.uk/subscribe";
 
 const form = document.getElementById("signup-form");
@@ -44,19 +37,12 @@ form.addEventListener("submit", async (event) => {
     return;
   }
 
-  button.disabled = true;
-  setStatus("Signing you up…");
+  setStatus("Taking you to confirm…");
 
-  // Field names mirror Beehiiv's own form. double_opt=false means no
-  // confirmation step, so the subscriber is live immediately.
-  const body = new URLSearchParams({
-    email,
-    sent_from_orchid: "true",
-    double_opt: "false",
-    auto_login_enabled: "true",
-    is_js_enabled: "true",
-    utm_source: "mbarton.co.uk",
-  });
+  const url = new URL(BEEHIIV_SUBSCRIBE_URL);
+  url.searchParams.set("email", email);
+  window.location.assign(url.toString());
+});
 
   try {
     await fetch(BEEHIIV_CREATE_URL, {
