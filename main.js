@@ -1,23 +1,28 @@
 /* MB&Co. — newsletter signup
  *
  * ─────────────────────────────────────────────────────────────────────────
- * Posts to Beehiiv with the typed address carried over as ?email=, so the
- * subscriber only has to confirm rather than type it twice.
+ * Posts straight to the Beehiiv subscribe endpoint on Matthew's own custom
+ * domain, so the reader enters their address once and never leaves the page.
  *
- * Points at the Beehiiv publication on Matthew's own custom domain, so every
- * link handed out stays on mbarton.co.uk.
+ * The request goes out with mode:"no-cors" because Beehiiv does not send
+ * CORS headers for this endpoint. The POST is delivered, but the response is
+ * opaque — meaning we cannot read success or failure back. The form therefore
+ * confirms optimistically. Genuine failures (already subscribed, blocked
+ * address) are invisible here and only show up in Beehiiv's Audience list.
+ * That is the cost of keeping the reader on the page; the alternative is
+ * Beehiiv's iframe embed, which reports properly but brings its own styling.
  *
- * Setting BEEHIIV_SUBSCRIBE_URL back to "" reinstates the LinkedIn fallback.
+ * If the request cannot be sent at all, we fall back to the hosted subscribe
+ * page rather than leaving anyone stranded.
  * ─────────────────────────────────────────────────────────────────────────
  */
+const BEEHIIV_CREATE_URL = "https://newsletter.mbarton.co.uk/create";
 const BEEHIIV_SUBSCRIBE_URL = "https://newsletter.mbarton.co.uk/subscribe";
-
-const LINKEDIN_FALLBACK =
-  "https://www.linkedin.com/newsletters/iterations-by-matthew-barton-7289678221522952192/";
 
 const form = document.getElementById("signup-form");
 const input = document.getElementById("email");
 const status = document.getElementById("signup-status");
+const button = form.querySelector("button");
 
 function setStatus(message, state) {
   status.textContent = message;
@@ -28,7 +33,7 @@ function setStatus(message, state) {
   }
 }
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const email = input.value.trim();
@@ -39,16 +44,36 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  if (BEEHIIV_SUBSCRIBE_URL) {
+  button.disabled = true;
+  setStatus("Signing you up…");
+
+  // Field names mirror Beehiiv's own form. double_opt=false means no
+  // confirmation step, so the subscriber is live immediately.
+  const body = new URLSearchParams({
+    email,
+    sent_from_orchid: "true",
+    double_opt: "false",
+    auto_login_enabled: "true",
+    is_js_enabled: "true",
+    utm_source: "mbarton.co.uk",
+  });
+
+  try {
+    await fetch(BEEHIIV_CREATE_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: body.toString(),
+    });
+
+    form.hidden = true;
+    setStatus("You're in. Check your inbox.");
+  } catch (err) {
+    // Could not reach Beehiiv at all — hand off rather than lose the signup.
     const url = new URL(BEEHIIV_SUBSCRIBE_URL);
     url.searchParams.set("email", email);
-    setStatus("Taking you to confirm your subscription…");
     window.location.assign(url.toString());
-    return;
   }
-
-  setStatus("Opening the newsletter on LinkedIn…");
-  window.open(LINKEDIN_FALLBACK, "_blank", "noopener");
 });
 
 const year = document.getElementById("year");
