@@ -152,65 +152,14 @@ a:focus-visible {
   font-size: 1rem;
 }
 
-.signup-form {
-  margin-top: 1.4rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.2rem 1.25rem;
-}
 
-.signup-form input {
-  flex: 1 1 16rem;
-  min-width: 0;
-  font-family: inherit;
-  font-size: 1.125rem;
-  padding: 0.55rem 0.1rem;
-  color: var(--ink);
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid rgba(27, 27, 39, 0.28);
-  border-radius: 0;
-  transition: border-color 0.15s ease;
-}
-.signup-form input::placeholder { color: rgba(60, 57, 57, 0.45); }
-.signup-form input:focus {
-  outline: none;
-  border-bottom-color: var(--ink-strong);
-}
 
-.signup-form button {
-  flex: 0 0 auto;
-  font-family: inherit;
-  font-size: 1.125rem;
-  font-weight: 600;
-  padding: 0.72rem 0;
-  color: var(--ink-strong);
-  background: none;
-  border: 0;
-  border-bottom: 1px solid var(--ink-strong);
-  border-radius: 0;
-  cursor: pointer;
-  transition: opacity 0.15s ease;
-}
-.signup-form button:hover { opacity: 0.85; }
-.signup-form button:focus-visible {
-  outline: 2px solid var(--ink-strong);
-  outline-offset: 4px;
-}
 
-.signup-status {
-  margin: 0.9rem 0 0;
-  font-size: 1rem;
-  min-height: 1.5rem;
-}
-.signup-status[data-state="error"] { color: #9B2C2C; }
-
-.signup-count {
-  margin: 0.35rem 0 0;
-  font-size: 1rem;
-}
 .signup-count strong { font-weight: 700; }
+
+.signup-embed {
+  margin-top: 1.25rem;
+}
 
 .signup-privacy {
   margin: 0.75rem 0 0;

@@ -86,14 +86,16 @@
              once Beehiiv is sending and its API can be read. -->
         <p class="signup-count">Join <strong>201</strong> people reading Iterations.</p>
 
-        <form class="signup-form" id="signup-form" novalidate>
-          <label class="visually-hidden" for="email">Email address</label>
-          <input id="email" name="email" type="email" autocomplete="email"
-                 placeholder="you@example.com" required>
-          <button type="submit">Subscribe Now</button>
-        </form>
+        <!-- Beehiiv subscribe form. Renders and submits in place, so the reader
+             enters their address once and stays on the page. Its appearance is
+             controlled in Beehiiv (Grow -> Subscribe Forms), not by styles.css —
+             the markup is injected by Beehiiv's loader and cannot be restyled
+             from here. -->
+        <div class="signup-embed">
+          <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js"
+                  data-beehiiv-form="95769e9b-e347-4340-8025-097a2545d365"></script>
+        </div>
 
-        <p class="signup-status" id="signup-status" role="status" aria-live="polite"></p>
         <p class="signup-privacy">We respect your privacy. No spam, ever.</p>
       </div>
     </section>
@@ -113,5 +115,10 @@
      locally, which is harmless. Must also be switched on in the Vercel
      dashboard: Project -> Analytics -> Enable. -->
 <script defer src="/_vercel/insights/script.js"></script>
+
+<!-- Forwards UTM parameters on this page through to the Beehiiv form, so
+     signup sources show up in Beehiiv's attribution reporting. -->
+<script type="text/javascript" async
+        src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
 </body>
 </html>
