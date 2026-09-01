@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Four-Week Sales Sprint | Matthew Barton</title>
+<meta name="description" content="A four-week sprint for founder-led businesses. Not coaching, not more strategy. Live execution, done together.">
+<meta property="og:title" content="The Four-Week Sales Sprint | Matthew Barton">
+<meta property="og:description" content="Stop avoiding sales. Start making the asks. A four-week sprint for founder-led businesses. Live execution, done together.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.mbarton.co.uk/sprint">
+<meta property="og:image" content="https://www.mbarton.co.uk/assets/matt-behind-scenes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/mbco-mark-180.png">
+<link rel="apple-touch-icon" href="assets/mbco-mark-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Anton&family=Inter:wght@400;500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#08131f;
+    --night-2:#0b1c30;
+    --paper:#f4f5f7;
+    --card:#ffffff;
+    --ink:#0b1c30;
+    --ink-soft:#5a616b;
+    --line:#e2e4e9;
+    --accent:#2f6bff;
+    --accent-hi:#5b8cff;
+    --gold:#f5b301;
+    --on-night-soft:#9fb0c6;
+
+    --display:"Anton",system-ui,sans-serif;
+    --sub:"Archivo",system-ui,sans-serif;
+    --body:"Inter",system-ui,sans-serif;
+    --mono:"Inter",system-ui,sans-serif; /* was JetBrains Mono — small-label font, name kept to avoid touching every rule */
+    --script:"Caveat",cursive;
+
+    --pad:clamp(72px,9vw,128px);
+    --gutter:clamp(20px,5vw,40px);
+    --max:1200px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;} *{animation:none!important;transition:none!important;}}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  img,video{max-width:100%;display:block;}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter);}
+  section{padding-top:var(--pad);padding-bottom:var(--pad);}
+
+  h1,h2{font-family:var(--display);margin:0;font-weight:400;line-height:.92;letter-spacing:-0.01em;}
+  h1{font-size:clamp(46px,8.6vw,104px);}
+  h2{font-size:clamp(34px,5.4vw,64px);}
+  h3{font-family:var(--sub);font-weight:700;font-size:19px;letter-spacing:-0.01em;line-height:1.25;margin:0;}
+  p{margin:0;}
+
+  .eyebrow{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--accent);margin-bottom:22px;}
+  .eyebrow::before{content:"« ";}
+  .eyebrow::after{content:" »";}
+  .on-night .eyebrow{color:var(--accent-hi);}
+
+  /* split pill button */
+  .btn{display:inline-flex;align-items:stretch;text-decoration:none;border-radius:999px;overflow:hidden;font-family:var(--body);font-weight:500;font-size:16px;transition:transform .15s ease;}
+  .btn .lbl{background:var(--accent);color:#fff;padding:15px 26px;transition:background .15s ease;}
+  .btn .arw{background:var(--accent);color:#fff;display:grid;place-items:center;padding:0 18px;border-left:1px solid rgba(0,0,0,.18);font-size:15px;transition:background .15s ease;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn:hover .lbl,.btn:hover .arw{background:#1d52d8;}
+  .btn.light .lbl,.btn.light .arw{background:#fff;color:var(--ink);}
+  .btn.light .arw{border-left:1px solid rgba(11,28,48,.14);}
+  .btn.light:hover .lbl,.btn.light:hover .arw{background:#e6ecff;}
+  .btn.ghost{border:1px solid rgba(255,255,255,.34);}
+  .btn.ghost .lbl,.btn.ghost .arw{background:transparent;color:#fff;}
+  a:focus-visible,.btn:focus-visible{outline:3px solid var(--accent-hi);outline-offset:3px;}
+
+  /* nav — floating translucent pill, sticky on scroll */
+  header{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .2s ease;}
+  header.scrolled{background:rgba(8,19,31,.92);backdrop-filter:blur(10px);}
+  section{scroll-margin-top:84px;}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:26px;padding-bottom:26px;}
+  .wordmark{font-family:var(--sub);font-weight:600;font-size:17px;letter-spacing:.005em;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:11px;}
+  .wordmark img{width:32px;height:32px;border-radius:7px;flex:none;}
+  .wordmark span{font-family:var(--body);font-weight:400;font-size:14px;color:var(--on-night-soft);letter-spacing:0;}
+  .wordmark .nm{display:inline-flex;align-items:baseline;gap:9px;}
+  @media(max-width:520px){.wordmark span{display:none;}}
+  .navpill{display:none;gap:26px;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:11px 26px;}
+  @media(min-width:900px){.navpill{display:flex;}}
+  .navpill a{color:#cdd8e6;text-decoration:none;font-size:14.5px;}
+  .navpill a:hover{color:#fff;}
+  header .btn{font-size:14.5px;}
+  header .btn .lbl{padding:10px 20px;}
+  header .btn .arw{padding:0 14px;font-size:13px;}
+
+  /* HERO — full bleed */
+  .hero{position:relative;min-height:min(94vh,880px);display:flex;flex-direction:column;justify-content:flex-end;background:var(--night);color:#fff;overflow:hidden;padding-top:150px;padding-bottom:clamp(32px,5vw,52px);}
+  .hero-media{position:absolute;inset:0;z-index:0;}
+  .hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;}
+  .hero-media img{object-position:78% 32%;}
+  .hero-media .empty{width:100%;height:100%;background:
+      radial-gradient(70% 90% at 78% 34%,#1b3f7a 0%,transparent 62%),
+      linear-gradient(160deg,#122a4a 0%,#08131f 68%);
+    display:grid;place-items:end center;}
+  .hero-media .empty span{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:#54687f;padding-bottom:28px;}
+  .scrim{position:absolute;inset:0;z-index:1;background:
+      linear-gradient(90deg,rgba(4,10,18,.92) 0%,rgba(4,10,18,.72) 42%,rgba(4,10,18,.15) 100%),
+      linear-gradient(0deg,rgba(4,10,18,.85) 0%,transparent 45%);}
+  .hero .wrap{position:relative;z-index:2;width:100%;}
+
+  .script{font-family:var(--script);font-weight:700;font-size:clamp(32px,4.8vw,58px);color:var(--accent-hi);line-height:1;display:inline-block;transform:rotate(-2deg);transform-origin:left center;margin-bottom:10px;}
+  .hero h1{max-width:13ch;text-shadow:0 2px 24px rgba(0,0,0,.35);}
+  .hero-sub{margin-top:26px;max-width:44ch;color:#c2cfdf;font-size:clamp(16px,1.5vw,18.5px);}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:24px 30px;align-items:center;margin-top:36px;}
+
+  /* narrow viewports — the wide crop pushes Matthew off-frame and the side-lit
+     scrim leaves the right half bright, so re-crop and light from the bottom */
+  @media(max-width:900px){
+    .hero-media img{object-position:92% 30%;}
+    .scrim{background:linear-gradient(0deg,rgba(4,10,18,.96) 0%,rgba(4,10,18,.88) 32%,rgba(4,10,18,.55) 62%,rgba(4,10,18,.3) 100%);}
+  }
+  @media(max-width:700px){
+    header .wrap{padding-top:20px;padding-bottom:20px;}
+    .wordmark{font-size:20px;white-space:nowrap;}
+    header .btn{font-size:13.5px;}
+    header .btn .lbl{padding:9px 15px;white-space:nowrap;}
+    header .btn .arw{display:none;}
+
+    .hero{padding-top:124px;}
+    .hero-media img{object-position:95% 28%;}
+    .scrim{background:linear-gradient(0deg,rgba(4,10,18,.97) 0%,rgba(4,10,18,.93) 30%,rgba(4,10,18,.62) 58%,rgba(4,10,18,.34) 100%);}
+    .script{font-size:clamp(24px,7.4vw,34px);margin-bottom:14px;}
+    .hero-sub{margin-top:20px;}
+    .hero-actions{margin-top:28px;gap:20px 24px;}
+  }
+  .rating{display:flex;align-items:center;gap:14px;}
+  .rating .fig{font-family:var(--display);font-size:34px;line-height:1;}
+  .rating .stars{color:var(--gold);letter-spacing:2px;font-size:14px;}
+  .rating .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--on-night-soft);margin-top:5px;line-height:1.5;}
+
+  /* floating scoreboard card */
+  .bar{margin-top:clamp(44px,7vw,84px);background:rgba(6,14,24,.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:24px 28px;display:flex;flex-wrap:wrap;gap:20px 44px;align-items:center;justify-content:space-between;}
+  .bar .label{font-family:var(--sub);font-weight:700;font-size:18px;}
+  .bar .metrics{display:flex;flex-wrap:wrap;gap:16px 40px;}
+  .bar .metric{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;color:var(--on-night-soft);}
+  .bar .metric b{display:block;font-family:var(--display);font-weight:400;font-size:26px;letter-spacing:0;color:#fff;margin-bottom:3px;}
+
+  /* two-column feature split (image one side, text the other) */
+  .split{display:grid;gap:36px;align-items:center;}
+  @media(min-width:920px){
+    .split{grid-template-columns:.75fr 1.25fr;gap:clamp(48px,7vw,96px);}
+    .split.flip{grid-template-columns:1.25fr .75fr;}
+    .split.flip .split-media{order:2;justify-self:end;}
+    .split.flip .split-body{order:1;}
+  }
+  .split-media{aspect-ratio:4/3;border-radius:18px;border:1px solid var(--line);width:100%;max-width:420px;}
+  .split-body h2{max-width:16ch;}
+  .split-foot{display:flex;flex-wrap:wrap;gap:24px 40px;align-items:center;margin-top:34px;}
+  .split-foot .stat b{font-family:var(--display);font-weight:400;font-size:clamp(34px,4vw,48px);line-height:1;display:block;margin-bottom:4px;}
+  .split-foot .stat span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-soft);}
+
+  /* light sections */
+  .measure{max-width:58ch;}
+  .lead{font-size:clamp(17px,1.7vw,20px);color:var(--ink-soft);margin-top:26px;}
+  .contrast{margin-top:34px;padding:26px 30px;background:var(--night);color:#fff;border-radius:14px;font-size:18px;font-family:var(--sub);font-weight:600;line-height:1.4;}
+
+  .weeks{display:grid;gap:16px;margin-top:52px;}
+  @media(min-width:760px){.weeks{grid-template-columns:repeat(2,1fr);}}
+  @media(min-width:1040px){.weeks{grid-template-columns:repeat(4,1fr);}}
+  .week{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 26px;}
+  .week .num{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--accent);display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin-bottom:20px;}
+  .week h3{margin-bottom:10px;}
+  .week p{font-size:15.5px;color:var(--ink-soft);}
+
+  /* path to production — minimalist step cards, pen-drawn numbers */
+  .path{margin-top:56px;position:relative;display:grid;gap:20px;}
+  @media(min-width:880px){.path{grid-template-columns:repeat(4,1fr);gap:24px;}}
+  .step{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px 28px;}
+  .steplabel{display:block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-soft);margin-bottom:10px;}
+  .step h3{margin-bottom:8px;padding-right:52px;}
+  .step summary{cursor:pointer;list-style:none;padding-right:52px;}
+  .step summary::-webkit-details-marker{display:none;}
+  .step summary h3{padding-right:0;}
+  .step .more{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--accent);}
+  .step .more::after{content:"+";display:grid;place-items:center;width:22px;height:22px;border:1.5px solid var(--accent);border-radius:999px;font-size:14px;line-height:1;}
+  .step details[open] .more::after{content:"–";}
+  .step summary:hover .more{color:#1d52d8;}
+  .step summary:hover .more::after{border-color:#1d52d8;background:#e6ecff;}
+  .step summary:focus-visible{outline:3px solid var(--accent-hi);outline-offset:4px;border-radius:6px;}
+  .step details p{margin-top:12px;}
+  .price summary:hover{color:var(--accent);}
+  .price.feature summary:hover{color:var(--accent-hi);}
+  .step p{font-size:14.5px;color:var(--ink-soft);}
+  .steptag{display:block;margin-top:12px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--accent);}
+  .stepink{position:absolute;top:16px;right:16px;width:52px;height:52px;color:var(--accent);}
+  .stepink svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-6deg);}
+  .stepink b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--script);font-weight:700;font-size:30px;line-height:1;color:var(--ink);}
+  .patharrow{display:none;}
+  @media(min-width:880px){
+    .patharrow{display:grid;place-items:center;position:absolute;top:50%;width:36px;height:36px;border-radius:999px;background:var(--card);border:1px solid var(--line);transform:translate(-50%,-50%);z-index:2;font-size:14px;color:var(--ink);}
+  }
+
+  /* testimonials carousel */
+  .proof-head{text-align:center;}
+  .proof-head h2{max-width:20ch;margin-inline:auto;}
+  .carousel{display:grid;gap:32px;margin-top:52px;align-items:center;}
+  @media(min-width:920px){.carousel{grid-template-columns:1.05fr .95fr;gap:56px;}}
+  /* Client photos pending permission — photo column hidden so Matthew's own
+     face isn't shown beside someone else's quote. Delete this block to restore. */
+  .carousel .car-media{display:none;}
+  .carousel{max-width:760px;margin-inline:auto;}
+  @media(min-width:920px){.carousel{grid-template-columns:1fr;}}
+  .car-media{display:grid;aspect-ratio:4/3.2;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:
+      radial-gradient(70% 90% at 50% 20%,#1b3f7a 0%,transparent 62%),
+      linear-gradient(160deg,#122a4a 0%,#08131f 68%);}
+  .car-shot{grid-area:1/1;display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .3s ease;}
+  .car-shot img{width:100%;height:100%;object-fit:cover;}
+  .car-shot .hint{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:#54687f;text-align:center;padding:20px;}
+  .car-shot.active,.car-quote.active{opacity:1;visibility:visible;}
+  .car-quotes{display:grid;}
+  .car-quote{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .3s ease;}
+  .car-top{display:flex;align-items:center;gap:14px;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:20px;}
+  .car-top .avatar{width:48px;height:48px;border-radius:999px;background:var(--night-2);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:18px;flex:none;}
+  .car-top .name{font-family:var(--sub);font-weight:600;font-size:17px;line-height:1.2;}
+  .car-top .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink-soft);margin-top:5px;}
+  .car-top .stars{margin-left:auto;color:var(--gold);letter-spacing:2px;font-size:15px;}
+  .car-quote blockquote{margin:0;font-family:var(--script);font-weight:700;font-size:clamp(27px,3.6vw,40px);line-height:1.32;color:var(--ink);}
+  .car-nav{display:flex;gap:12px;justify-content:flex-end;margin-top:28px;}
+  .car-nav button{width:46px;height:46px;border-radius:999px;display:grid;place-items:center;font-size:15px;cursor:pointer;font-family:var(--body);transition:background .15s ease;}
+  .car-nav .prev{background:var(--card);border:1px solid var(--line);color:var(--ink);}
+  .car-nav .prev:hover{background:#e6ecff;}
+  .car-nav .next{background:var(--accent);border:0;color:#fff;}
+  .car-nav .next:hover{background:#1d52d8;}
+  .car-nav button:focus-visible{outline:3px solid var(--accent-hi);outline-offset:3px;}
+  .verified{margin-top:28px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ink-soft);}
+  .verified a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;}
+  .verified a:hover{color:#1d52d8;}
+
+  .outcomes{display:grid;gap:16px;margin-top:56px;}
+  @media(min-width:760px){.outcomes{grid-template-columns:repeat(2,1fr);}}
+  @media(min-width:1040px){.outcomes{grid-template-columns:repeat(4,1fr);}}
+  .outcome{background:var(--night);color:#fff;border-radius:16px;padding:26px 24px;}
+  .outcome .role{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;color:var(--accent-hi);display:block;margin-bottom:14px;line-height:1.5;}
+  .outcome p{font-size:15px;color:var(--on-night-soft);}
+
+  /* watch video */
+  .watch-head{display:grid;gap:28px;align-items:end;margin-bottom:52px;}
+  @media(min-width:960px){.watch-head{grid-template-columns:1.5fr 1.2fr auto;gap:44px;}}
+  .watch-head h2{max-width:14ch;}
+  .watch-head .support{font-size:15.5px;color:var(--ink-soft);max-width:40ch;}
+  .watch-row{display:flex;align-items:center;justify-content:center;gap:20px;}
+  .watch-slot{display:grid;place-items:center;overflow:hidden;background:
+      radial-gradient(70% 90% at 50% 20%,#1b3f7a 0%,transparent 62%),
+      linear-gradient(160deg,#122a4a 0%,#08131f 68%);}
+  .watch-slot .hint{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:#54687f;text-align:center;padding:20px;}
+  .watch-slot img{width:100%;height:100%;object-fit:cover;}
+  .watch-side{display:none;}
+  @media(min-width:960px){.watch-side{display:grid;flex:1 1 0;aspect-ratio:3/4;border-radius:16px;border:1px solid var(--line);}}
+  .watch-main{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;border:1px solid var(--line);}
+  .watch-main iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .watch-side iframe{width:100%;height:100%;border:0;}
+  @media(min-width:960px){.watch-main{flex:0 0 56%;}}
+  .watch-card{position:absolute;left:16px;bottom:16px;right:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  @media(min-width:600px){.watch-card{right:auto;max-width:330px;}}
+  .watch-card p{font-family:var(--sub);font-weight:600;font-size:15px;line-height:1.35;}
+  .watch-play{width:46px;height:46px;border-radius:999px;background:var(--accent);color:#fff;display:grid;place-items:center;border:0;cursor:pointer;font-size:13px;flex:none;transition:background .15s ease;}
+  .watch-play:hover{background:#1d52d8;}
+  .watch-play:focus-visible{outline:3px solid var(--accent-hi);outline-offset:3px;}
+
+  .prices{display:grid;gap:20px;margin-top:52px;}
+  @media(min-width:820px){.prices{grid-template-columns:1fr 1fr;}}
+  .price{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:36px 32px;}
+  .price.feature{background:var(--night);color:#fff;border-color:var(--night);}
+  .price .tag{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--ink-soft);}
+  .price.feature .tag{color:var(--accent-hi);}
+  .price .fig{font-family:var(--display);font-size:clamp(48px,6.4vw,68px);margin:16px 0 18px;display:block;line-height:1;}
+  .price details{margin-top:20px;border-top:1px solid var(--line);}
+  .price.feature details{border-top-color:rgba(255,255,255,.14);}
+  .price summary{cursor:pointer;list-style:none;padding:16px 0 4px;font-family:var(--sub);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .price summary::-webkit-details-marker{display:none;}
+  .price summary::after{content:"+";font-family:var(--body);font-weight:400;font-size:22px;line-height:1;color:var(--accent);}
+  .price.feature summary::after{color:var(--accent-hi);}
+  .price details[open] summary::after{content:"–";}
+  .price summary:focus-visible{outline:3px solid var(--accent-hi);outline-offset:3px;border-radius:6px;}
+  .price ul{list-style:none;margin:6px 0 0;padding:0;}
+  .price li{position:relative;padding:10px 0 10px 26px;font-size:15px;line-height:1.5;color:var(--ink-soft);border-top:1px solid var(--line);}
+  .price li::before{content:"→";position:absolute;left:0;color:var(--accent);}
+  .price.feature li{color:var(--on-night-soft);border-top:1px solid rgba(255,255,255,.12);}
+  .price.feature li::before{color:var(--accent-hi);}
+  .price p{font-size:16px;color:var(--ink-soft);}
+  .price.feature p{color:var(--on-night-soft);}
+  .price .terms{margin-top:16px;font-size:14px;}
+
+  .close{background:var(--night);color:#fff;text-align:center;position:relative;overflow:hidden;}
+  .close::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 112%,rgba(47,107,255,.32),transparent 64%);pointer-events:none;}
+  .close .wrap{position:relative;z-index:2;}
+  .close .script{transform:rotate(-2deg);margin-bottom:8px;}
+  .close h2{max-width:18ch;margin:0 auto;}
+  .close p{color:var(--on-night-soft);margin-top:24px;max-width:44ch;margin-inline:auto;}
+  .close .btn{margin-top:36px;}
+
+  footer{background:var(--night);color:var(--on-night-soft);padding-bottom:56px;}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.13);padding-top:34px;}
+  footer a{color:var(--on-night-soft);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.1em;}
+  footer a:hover{color:#fff;}
+  footer .name{display:inline-flex;align-items:center;gap:11px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--on-night-soft);}
+  footer .name img{width:28px;height:28px;border-radius:6px;}
+  .links{display:flex;gap:26px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="#top"><img src="assets/mbco-mark.jpg" alt="" width="32" height="32"><span class="nm">Matthew Barton <span>Sales sprints</span></span></a>
+    <nav class="navpill">
+      <a href="#how">How it works</a>
+      <a href="#proof">Proof</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <a class="btn" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl">Book a fit call</span><span class="arw" aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero on-night">
+    <div class="hero-media">
+      <img src="assets/matt-behind-scenes.jpg" alt="Matthew Barton" fetchpriority="high">
+    </div>
+    <div class="scrim"></div>
+
+    <div class="wrap">
+      <span class="script">The Four-Week Sales Sprint</span>
+      <h1>Stop avoiding sales. Start making the asks.</h1>
+      <p class="hero-sub">A sprint for founder-led businesses. Not coaching, not more strategy. Live execution, done together, until selling stops being the thing you push to next week.</p>
+
+      <div class="hero-actions">
+        <a class="btn" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl">Book a 15-minute fit call</span><span class="arw" aria-hidden="true">→</span></a>
+        <div class="rating">
+          <span class="fig">5.0</span>
+          <div>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <div class="meta">Verified reviews on<br>Preply &amp; LinkedIn</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bar">
+        <span class="label">We only score three things</span>
+        <div class="metrics">
+          <div class="metric"><b>Money</b>made</div>
+          <div class="metric"><b>Proposals</b>sent</div>
+          <div class="metric"><b>Conversations</b>moved forward</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="wrap">
+      <div class="split">
+        <div class="watch-slot split-media">
+          <img src="assets/img-3319.jpg" alt="Matthew Barton" loading="lazy" style="object-position:center 30%">
+        </div>
+        <div class="split-body">
+          <span class="eyebrow">The problem</span>
+          <h2>You don't have an information problem</h2>
+          <p class="lead">Most founders know who to call, what to send, and which conversation would move the business forward this week. And it doesn't happen. Procrastination, perfectionism, the quiet fear of the ask. Not laziness. The emotional weight of selling.</p>
+          <div class="split-foot">
+            <a class="btn" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl">Book a 15-minute fit call</span><span class="arw" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT THIS IS -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="split flip">
+        <div class="split-body">
+          <span class="eyebrow">What this is</span>
+          <h2>A commercial execution partner, for four weeks</h2>
+          <p class="lead">I don't remove the discomfort of selling. I share it. We make the important asks together, live, on the call. Then you keep the momentum.</p>
+          <p class="contrast">Not coaching. Not another strategy call. Not a framework you get handed and check in on next month.</p>
+        </div>
+        <div class="watch-slot split-media">
+          <img src="assets/matt-headshot.jpg" alt="Matthew Barton" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCLUDED -->
+  <section id="how">
+    <div class="wrap">
+      <span class="eyebrow">How it works</span>
+      <h2>Four steps to selling that works</h2>
+      <div class="path">
+        <div class="step">
+          <span class="steplabel">Step one</span>
+          <details>
+            <summary><h3>The fit call</h3><span class="more">What happens</span></summary>
+            <p>We talk for 15 minutes. You tell me what's been stopping you from selling. I tell you if the Sprint can fix it. If yes, we start that same week.</p>
+          </details>
+          <span class="steptag">15 minutes</span>
+          <span class="stepink" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none"><path d="M32 6 C 48 5, 59 16, 58 31 C 57 47, 46 58, 30 57 C 15 56, 5 45, 7 29 C 9 15, 19 8, 34 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <b>1</b>
+          </span>
+        </div>
+        <span class="patharrow" style="left:25%" aria-hidden="true">→</span>
+        <div class="step">
+          <span class="steplabel">Step two</span>
+          <details>
+            <summary><h3>The kickoff</h3><span class="more">What happens</span></summary>
+            <p>We pick one goal and a deadline. We write down ten people who could get you there. We write your offer and put a price on it. Then you message the first person before the call even ends.</p>
+          </details>
+          <span class="steptag">Week 1 · 90 minutes</span>
+          <span class="stepink" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none"><path d="M32 6 C 48 5, 59 16, 58 31 C 57 47, 46 58, 30 57 C 15 56, 5 45, 7 29 C 9 15, 19 8, 34 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <b>2</b>
+          </span>
+        </div>
+        <span class="patharrow" style="left:50%" aria-hidden="true">→</span>
+        <div class="step">
+          <span class="steplabel">Step three</span>
+          <details>
+            <summary><h3>The working weeks</h3><span class="more">What happens</span></summary>
+            <p>Once a week, we get on a call. We send the emails and make the calls together, right there. Nothing gets saved for later. Every weekday you tell me what happened. I write back within a day.</p>
+          </details>
+          <span class="steptag">Weeks 2–4</span>
+          <span class="stepink" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none"><path d="M32 6 C 48 5, 59 16, 58 31 C 57 47, 46 58, 30 57 C 15 56, 5 45, 7 29 C 9 15, 19 8, 34 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <b>3</b>
+          </span>
+        </div>
+        <span class="patharrow" style="left:75%" aria-hidden="true">→</span>
+        <div class="step">
+          <span class="steplabel">Step four</span>
+          <details>
+            <summary><h3>The final count</h3><span class="more">What happens</span></summary>
+            <p>We count everything up. Did you hit the goal, yes or no? Either way you walk away with a way of selling that works, not a plan on paper.</p>
+          </details>
+          <span class="steptag">End of week 4</span>
+          <span class="stepink" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none"><path d="M32 6 C 48 5, 59 16, 58 31 C 57 47, 46 58, 30 57 C 15 56, 5 45, 7 29 C 9 15, 19 8, 34 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <b>4</b>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section style="padding-top:0">
+    <div class="wrap measure">
+      <span class="eyebrow">Who it's for</span>
+      <h2>Founder-led businesses where the founder is still the salesperson</h2>
+      <p class="lead">Freelancers, consultants and small founders who are good at the work but haven't built the habit of selling it. People with everything ready except the asking.</p>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section id="proof">
+    <div class="wrap">
+      <div class="proof-head">
+        <span class="eyebrow">Testimonials</span>
+        <h2>What clients say</h2>
+      </div>
+
+      <div class="carousel">
+        <div class="car-media">
+          <!-- Swap each slide for <img src="…" alt="…"> — photo of you + that client on a call -->
+          <!-- TEMP: portrait as placeholder in all three — swap each for a photo of you + that client -->
+          <div class="car-shot active"><img src="assets/matt-portrait.jpg" alt="" loading="lazy"></div>
+          <div class="car-shot"><img src="assets/matt-portrait.jpg" alt="" loading="lazy" style="object-position:center 20%"></div>
+          <div class="car-shot"><img src="assets/matt-portrait.jpg" alt="" loading="lazy" style="object-position:center 35%"></div>
+          <div class="car-shot"><img src="assets/matt-portrait.jpg" alt="" loading="lazy" style="object-position:center 15%"></div>
+          <div class="car-shot"><img src="assets/matt-portrait.jpg" alt="" loading="lazy" style="object-position:center 40%"></div>
+        </div>
+
+        <div class="car-panel">
+          <div class="car-quotes" aria-live="polite">
+            <div class="car-quote active">
+              <div class="car-top">
+                <div class="avatar" aria-hidden="true">K</div>
+                <div><div class="name">Kieran</div><div class="role">Agency founder, Ireland</div></div>
+                <div class="stars" aria-hidden="true">★★★★★</div>
+              </div>
+              <blockquote>"The impact was immediate, with tangible ROI from the very first call."</blockquote>
+            </div>
+            <div class="car-quote">
+              <div class="car-top">
+                <div class="avatar" aria-hidden="true">P</div>
+                <div><div class="name">Philipp</div><div class="role">Technical solutions engineer</div></div>
+                <div class="stars" aria-hidden="true">★★★★★</div>
+              </div>
+              <blockquote>"He has exceeded our expectations, becoming a mentor who has guided us in building an effective system."</blockquote>
+            </div>
+            <div class="car-quote">
+              <div class="car-top">
+                <div class="avatar" aria-hidden="true">G</div>
+                <div><div class="name">Georgie</div><div class="role">Freelance founder, London</div></div>
+                <div class="stars" aria-hidden="true">★★★★★</div>
+              </div>
+              <blockquote>"Within a couple of sessions I've gained focus and have started conversations with potential clients."</blockquote>
+            </div>
+            <div class="car-quote">
+              <div class="car-top">
+                <div class="avatar" aria-hidden="true">A</div>
+                <div><div class="name">Alexander</div><div class="role">Sustainability procurement</div></div>
+                <div class="stars" aria-hidden="true">★★★★★</div>
+              </div>
+              <blockquote>"Matt immediately identified what was missing in my sales processes."</blockquote>
+            </div>
+            <div class="car-quote">
+              <div class="car-top">
+                <div class="avatar" aria-hidden="true">L</div>
+                <div><div class="name">Lucas</div><div class="role">Founder, HR tech</div></div>
+                <div class="stars" aria-hidden="true">★★★★★</div>
+              </div>
+              <blockquote>"I highly recommend Matthew for his exceptional ability to set up a cold outbound strategy using state of the art technology."</blockquote>
+            </div>
+          </div>
+          <div class="car-nav">
+            <button class="prev" type="button" aria-label="Previous testimonial">←</button>
+            <button class="next" type="button" aria-label="Next testimonial">→</button>
+          </div>
+        </div>
+      </div>
+      <p class="verified">Verified reviews on <a href="https://preply.com/en/tutor/7213674" target="_blank" rel="noopener">Preply</a> and <a href="https://www.linkedin.com/in/matthewpbarton/details/recommendations/" target="_blank" rel="noopener">LinkedIn</a>. Read them yourself.</p>
+    </div>
+  </section>
+
+  <!-- WATCH VIDEO -->
+  <section id="watch">
+    <div class="wrap">
+      <div class="watch-head">
+        <div>
+          <span class="eyebrow">Watch video</span>
+          <h2>See what it looks like</h2>
+        </div>
+        <p class="support">Not a course. Not a framework. A short look at how this runs.</p>
+        <a class="btn" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl">Book a 15-minute fit call</span><span class="arw" aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="watch-row">
+        <div class="watch-slot watch-side"><iframe src="https://www.tiktok.com/embed/v2/7677449532635942166" title="TikTok clip" loading="lazy" allow="fullscreen" allowfullscreen scrolling="no"></iframe></div>
+        <div class="watch-slot watch-main">
+          <iframe src="https://player.vimeo.com/video/1144802052?title=0&byline=0&portrait=0&dnt=1" title="What the four weeks actually look like" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="watch-slot watch-side"><iframe src="https://www.tiktok.com/embed/v2/7613513748510231830" title="TikTok clip" loading="lazy" allow="fullscreen" allowfullscreen scrolling="no"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">Pricing</span>
+      <h2>Two ways in</h2>
+      <p class="lead" style="margin-top:18px;max-width:46ch">Both start with the same 15-minute call. We decide together which one fits.</p>
+      <div class="prices">
+        <div class="price feature">
+          <span class="tag">The Four-Week Sprint · start here</span>
+          <span class="fig">$998</span>
+          <p>Four weeks of live execution. Deliberately compact. The selling happens in your business, between sessions.</p>
+          <details>
+            <summary>What you get, and how you pay</summary>
+            <ul>
+              <li>90-minute kickoff: goal, deadline, ten named leads, your offer written and priced live</li>
+              <li>One 60-minute working session a week for the next three weeks, with the asks made on the call</li>
+              <li>Daily check-in: one line from you each weekday, one reply from me within 24 hours</li>
+              <li>The shared board: goal, lead tracker, scripts and scoreboard, visible all week</li>
+              <li>The final count: a straight yes or no against the goal in week four</li>
+            </ul>
+            <p class="terms">50% on booking, 50% at the start of week three. Or $898 upfront. I take on three Sprints at a time.</p>
+            <p class="terms">If the kickoff doesn't deliver, walk away. The second half never gets billed, or comes straight back if you paid upfront.</p>
+          </details>
+        </div>
+        <div class="price">
+          <span class="tag">Taster session</span>
+          <span class="fig">$89</span>
+          <p>Not sure yet? Start smaller.</p>
+          <details>
+            <summary>What you get, and how you pay</summary>
+            <ul>
+              <li>One 90-minute working session: clarity plus your first asks</li>
+              <li>Credited against the Sprint if you start within 14 days</li>
+            </ul>
+            <p class="terms">Paid in full at booking.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSE -->
+  <section class="close on-night" id="book">
+    <div class="wrap">
+      <span class="script">One question on the call</span>
+      <h2>What's the ask you've been avoiding?</h2>
+      <p>We start there. Fifteen minutes, no deck, no pitch.</p>
+      <a class="btn light" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl">Book a 15-minute fit call</span><span class="arw" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="name"><img src="assets/mbco-mark.jpg" alt="MB &amp; Co." width="28" height="28">&copy; 2026 Matthew Barton</span>
+    <div class="links">
+      <a href="mailto:matthew@mbarton.co.uk">Email</a>
+      <a href="https://www.linkedin.com/in/matthewpbarton/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var shots=document.querySelectorAll('.car-shot'),
+      quotes=document.querySelectorAll('.car-quote'),
+      n=quotes.length, i=0;
+  if(!n) return;
+  function show(k){
+    i=(k+n)%n;
+    shots.forEach(function(el,j){el.classList.toggle('active',j===i);});
+    quotes.forEach(function(el,j){el.classList.toggle('active',j===i);});
+  }
+  document.querySelector('.car-nav .prev').addEventListener('click',function(){show(i-1);});
+  document.querySelector('.car-nav .next').addEventListener('click',function(){show(i+1);});
+})();
+(function(){
+  var h=document.querySelector('header');
+  function onScroll(){h.classList.toggle('scrolled',window.scrollY>40);}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+
+<!-- Analytics — pick one, paste your ID, uncomment:
+Plausible:  <script defer data-domain="mbarton.co.uk" src="https://plausible.io/js/script.js"></script>
+GA4:        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+            <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXX');</script>
+-->
+
+</body>
+</html>
