@@ -87,7 +87,14 @@
   @media(min-width:900px){.navpill{display:flex;}}
   .navpill a{color:#cdd8e6;text-decoration:none;font-size:14.5px;}
   .navpill a:hover{color:#fff;}
+  .hdr-right{display:flex;align-items:center;gap:14px;flex:none;}
+  .langtoggle{display:inline-flex;align-items:center;gap:2px;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:4px;flex:none;}
+  .langtoggle button{appearance:none;-webkit-appearance:none;border:0;background:transparent;color:#cdd8e6;font-family:var(--body);font-size:13px;font-weight:500;line-height:1;padding:7px 12px;border-radius:999px;cursor:pointer;transition:background .15s ease,color .15s ease;}
+  .langtoggle button:hover{color:#fff;}
+  .langtoggle button.active{background:#fff;color:var(--ink);}
+  .langtoggle button:focus-visible{outline:3px solid var(--accent-hi);outline-offset:2px;}
   header .btn{font-size:14.5px;}
+  header .btn .lbl-sm{display:none;}
   header .btn .lbl{padding:10px 20px;}
   header .btn .arw{padding:0 14px;font-size:13px;}
 
@@ -118,11 +125,17 @@
     .scrim{background:linear-gradient(0deg,rgba(4,10,18,.96) 0%,rgba(4,10,18,.88) 32%,rgba(4,10,18,.55) 62%,rgba(4,10,18,.3) 100%);}
   }
   @media(max-width:700px){
-    header .wrap{padding-top:20px;padding-bottom:20px;}
-    .wordmark{font-size:20px;white-space:nowrap;}
+    header .wrap{padding-top:20px;padding-bottom:20px;gap:10px;}
+    .wordmark{font-size:17px;white-space:nowrap;gap:9px;}
+    .wordmark img{width:28px;height:28px;}
     header .btn{font-size:13.5px;}
     header .btn .lbl{padding:9px 15px;white-space:nowrap;}
     header .btn .arw{display:none;}
+    header .btn .lbl{display:none;}
+    header .btn .lbl-sm{display:block;}
+    .hdr-right{gap:9px;}
+    .langtoggle{padding:3px;}
+    .langtoggle button{font-size:12px;padding:6px 9px;}
 
     .hero{padding-top:124px;}
     .hero-media img{object-position:95% 28%;}
@@ -310,13 +323,19 @@
 
 <header>
   <div class="wrap">
-    <a class="wordmark" href="#top"><img src="assets/mbco-mark.jpg" alt="" width="32" height="32"><span class="nm">Matthew Barton <span>Sales sprints</span></span></a>
+    <a class="wordmark" href="#top"><img src="assets/mbco-mark.jpg" alt="" width="32" height="32"><span class="nm">Matthew Barton <span data-es="Sprints de ventas">Sales sprints</span></span></a>
     <nav class="navpill">
-      <a href="#how">How it works</a>
-      <a href="#proof">Proof</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#how" data-es="Cómo funciona">How it works</a>
+      <a href="#proof" data-es="Pruebas">Proof</a>
+      <a href="#pricing" data-es="Precios">Pricing</a>
     </nav>
-    <a class="btn" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl">Book a fit call</span><span class="arw" aria-hidden="true">→</span></a>
+    <div class="hdr-right">
+      <div class="langtoggle" role="group" aria-label="Language / Idioma">
+        <button type="button" class="active" data-setlang="en" aria-pressed="true">Eng</button>
+        <button type="button" data-setlang="es" aria-pressed="false">Es</button>
+      </div>
+      <a class="btn" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl" data-es="Agenda una llamada">Book a fit call</span><span class="lbl lbl-sm" data-es="Agendar">Book a call</span><span class="arw" aria-hidden="true">→</span></a>
+    </div>
   </div>
 </header>
 
@@ -330,27 +349,27 @@
     <div class="scrim"></div>
 
     <div class="wrap">
-      <span class="script">The Four-Week Sales Sprint</span>
-      <h1>Stop avoiding sales. Start making the asks.</h1>
-      <p class="hero-sub">A sprint for founder-led businesses. Not coaching, not more strategy. Live execution, done together, until selling stops being the thing you push to next week.</p>
+      <span class="script" data-es="El Sprint de Ventas de Cuatro Semanas">The Four-Week Sales Sprint</span>
+      <h1 data-es="Deja de evitar la venta. Empieza a pedir.">Stop avoiding sales. Start making the asks.</h1>
+      <p class="hero-sub" data-es="Un sprint para negocios liderados por su fundador. No es coaching ni más estrategia. Ejecución en vivo, hecha juntos, hasta que vender deje de ser lo que dejas para la semana que viene.">A sprint for founder-led businesses. Not coaching, not more strategy. Live execution, done together, until selling stops being the thing you push to next week.</p>
 
       <div class="hero-actions">
-        <a class="btn" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl">Book a 15-minute fit call</span><span class="arw" aria-hidden="true">→</span></a>
+        <a class="btn" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl" data-es="Agenda una llamada de 15 minutos">Book a 15-minute fit call</span><span class="arw" aria-hidden="true">→</span></a>
         <div class="rating">
           <span class="fig">5.0</span>
           <div>
             <div class="stars" aria-hidden="true">★★★★★</div>
-            <div class="meta">Verified reviews on<br>Preply &amp; LinkedIn</div>
+            <div class="meta" data-es="Reseñas verificadas en&lt;br&gt;Preply y LinkedIn">Verified reviews on<br>Preply &amp; LinkedIn</div>
           </div>
         </div>
       </div>
 
       <div class="bar">
-        <span class="label">We only score three things</span>
+        <span class="label" data-es="Solo medimos tres cosas">We only score three things</span>
         <div class="metrics">
-          <div class="metric"><b>Money</b>made</div>
-          <div class="metric"><b>Proposals</b>sent</div>
-          <div class="metric"><b>Conversations</b>moved forward</div>
+          <div class="metric" data-es="&lt;b&gt;Dinero&lt;/b&gt;generado"><b>Money</b>made</div>
+          <div class="metric" data-es="&lt;b&gt;Propuestas&lt;/b&gt;enviadas"><b>Proposals</b>sent</div>
+          <div class="metric" data-es="&lt;b&gt;Conversaciones&lt;/b&gt;que avanzaron"><b>Conversations</b>moved forward</div>
         </div>
       </div>
     </div>
@@ -364,11 +383,11 @@
           <img src="assets/img-3319.jpg" alt="Matthew Barton" loading="lazy" style="object-position:center 30%">
         </div>
         <div class="split-body">
-          <span class="eyebrow">The problem</span>
-          <h2>You don't have an information problem</h2>
-          <p class="lead">Most founders know who to call, what to send, and which conversation would move the business forward this week. And it doesn't happen. Procrastination, perfectionism, the quiet fear of the ask. Not laziness. The emotional weight of selling.</p>
+          <span class="eyebrow" data-es="El problema">The problem</span>
+          <h2 data-es="No tienes un problema de información">You don't have an information problem</h2>
+          <p class="lead" data-es="La mayoría de fundadores sabe a quién llamar, qué enviar y qué conversación movería el negocio esta semana. Y no ocurre. Procrastinación, perfeccionismo, el miedo callado a pedir. No es pereza. Es el peso emocional de vender.">Most founders know who to call, what to send, and which conversation would move the business forward this week. And it doesn't happen. Procrastination, perfectionism, the quiet fear of the ask. Not laziness. The emotional weight of selling.</p>
           <div class="split-foot">
-            <a class="btn" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl">Book a 15-minute fit call</span><span class="arw" aria-hidden="true">→</span></a>
+            <a class="btn" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl" data-es="Agenda una llamada de 15 minutos">Book a 15-minute fit call</span><span class="arw" aria-hidden="true">→</span></a>
           </div>
         </div>
       </div>
@@ -380,10 +399,10 @@
     <div class="wrap">
       <div class="split flip">
         <div class="split-body">
-          <span class="eyebrow">What this is</span>
-          <h2>A commercial execution partner, for four weeks</h2>
-          <p class="lead">I don't remove the discomfort of selling. I share it. We make the important asks together, live, on the call. Then you keep the momentum.</p>
-          <p class="contrast">Not coaching. Not another strategy call. Not a framework you get handed and check in on next month.</p>
+          <span class="eyebrow" data-es="Qué es esto">What this is</span>
+          <h2 data-es="Un socio de ejecución comercial, durante cuatro semanas">A commercial execution partner, for four weeks</h2>
+          <p class="lead" data-es="No elimino la incomodidad de vender. La comparto. Hacemos las peticiones importantes juntos, en vivo, durante la llamada. Después tú mantienes el ritmo.">I don't remove the discomfort of selling. I share it. We make the important asks together, live, on the call. Then you keep the momentum.</p>
+          <p class="contrast" data-es="No es coaching. No es otra llamada de estrategia. No es un marco de trabajo que te entregan y revisas el mes que viene.">Not coaching. Not another strategy call. Not a framework you get handed and check in on next month.</p>
         </div>
         <div class="watch-slot split-media">
           <img src="assets/matt-headshot.jpg" alt="Matthew Barton" loading="lazy">
@@ -395,16 +414,16 @@
   <!-- INCLUDED -->
   <section id="how">
     <div class="wrap">
-      <span class="eyebrow">How it works</span>
-      <h2>Four steps to selling that works</h2>
+      <span class="eyebrow" data-es="Cómo funciona">How it works</span>
+      <h2 data-es="Cuatro pasos hacia una venta que funciona">Four steps to selling that works</h2>
       <div class="path">
         <div class="step">
-          <span class="steplabel">Step one</span>
+          <span class="steplabel" data-es="Paso uno">Step one</span>
           <details>
-            <summary><h3>The fit call</h3><span class="more">What happens</span></summary>
-            <p>We talk for 15 minutes. You tell me what's been stopping you from selling. I tell you if the Sprint can fix it. If yes, we start that same week.</p>
+            <summary><h3 data-es="La llamada de encaje">The fit call</h3><span class="more" data-es="Qué pasa">What happens</span></summary>
+            <p data-es="Hablamos 15 minutos. Me cuentas qué te ha estado frenando para vender. Te digo si el Sprint puede resolverlo. Si es que sí, empezamos esa misma semana.">We talk for 15 minutes. You tell me what's been stopping you from selling. I tell you if the Sprint can fix it. If yes, we start that same week.</p>
           </details>
-          <span class="steptag">15 minutes</span>
+          <span class="steptag" data-es="15 minutos">15 minutes</span>
           <span class="stepink" aria-hidden="true">
             <svg viewBox="0 0 64 64" fill="none"><path d="M32 6 C 48 5, 59 16, 58 31 C 57 47, 46 58, 30 57 C 15 56, 5 45, 7 29 C 9 15, 19 8, 34 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
             <b>1</b>
@@ -412,12 +431,12 @@
         </div>
         <span class="patharrow" style="left:25%" aria-hidden="true">→</span>
         <div class="step">
-          <span class="steplabel">Step two</span>
+          <span class="steplabel" data-es="Paso dos">Step two</span>
           <details>
-            <summary><h3>The kickoff</h3><span class="more">What happens</span></summary>
-            <p>We pick one goal and a deadline. We write down ten people who could get you there. We write your offer and put a price on it. Then you message the first person before the call even ends.</p>
+            <summary><h3 data-es="El arranque">The kickoff</h3><span class="more" data-es="Qué pasa">What happens</span></summary>
+            <p data-es="Elegimos un objetivo y una fecha límite. Anotamos diez personas que podrían llevarte ahí. Escribimos tu oferta y le ponemos precio. Después escribes a la primera persona antes de que termine la llamada.">We pick one goal and a deadline. We write down ten people who could get you there. We write your offer and put a price on it. Then you message the first person before the call even ends.</p>
           </details>
-          <span class="steptag">Week 1 · 90 minutes</span>
+          <span class="steptag" data-es="Semana 1 · 90 minutos">Week 1 · 90 minutes</span>
           <span class="stepink" aria-hidden="true">
             <svg viewBox="0 0 64 64" fill="none"><path d="M32 6 C 48 5, 59 16, 58 31 C 57 47, 46 58, 30 57 C 15 56, 5 45, 7 29 C 9 15, 19 8, 34 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
             <b>2</b>
@@ -425,12 +444,12 @@
         </div>
         <span class="patharrow" style="left:50%" aria-hidden="true">→</span>
         <div class="step">
-          <span class="steplabel">Step three</span>
+          <span class="steplabel" data-es="Paso tres">Step three</span>
           <details>
-            <summary><h3>The working weeks</h3><span class="more">What happens</span></summary>
-            <p>Once a week, we get on a call. We send the emails and make the calls together, right there. Nothing gets saved for later. Every weekday you tell me what happened. I write back within a day.</p>
+            <summary><h3 data-es="Las semanas de trabajo">The working weeks</h3><span class="more" data-es="Qué pasa">What happens</span></summary>
+            <p data-es="Una vez por semana nos ponemos en llamada. Enviamos los correos y hacemos las llamadas juntos, ahí mismo. Nada se deja para después. Cada día laborable me cuentas qué pasó. Te respondo en menos de 24 horas.">Once a week, we get on a call. We send the emails and make the calls together, right there. Nothing gets saved for later. Every weekday you tell me what happened. I write back within a day.</p>
           </details>
-          <span class="steptag">Weeks 2–4</span>
+          <span class="steptag" data-es="Semanas 2–4">Weeks 2–4</span>
           <span class="stepink" aria-hidden="true">
             <svg viewBox="0 0 64 64" fill="none"><path d="M32 6 C 48 5, 59 16, 58 31 C 57 47, 46 58, 30 57 C 15 56, 5 45, 7 29 C 9 15, 19 8, 34 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
             <b>3</b>
@@ -438,12 +457,12 @@
         </div>
         <span class="patharrow" style="left:75%" aria-hidden="true">→</span>
         <div class="step">
-          <span class="steplabel">Step four</span>
+          <span class="steplabel" data-es="Paso cuatro">Step four</span>
           <details>
-            <summary><h3>The final count</h3><span class="more">What happens</span></summary>
-            <p>We count everything up. Did you hit the goal, yes or no? Either way you walk away with a way of selling that works, not a plan on paper.</p>
+            <summary><h3 data-es="El recuento final">The final count</h3><span class="more" data-es="Qué pasa">What happens</span></summary>
+            <p data-es="Contamos todo. ¿Alcanzaste el objetivo, sí o no? En cualquier caso te vas con una forma de vender que funciona, no con un plan en papel.">We count everything up. Did you hit the goal, yes or no? Either way you walk away with a way of selling that works, not a plan on paper.</p>
           </details>
-          <span class="steptag">End of week 4</span>
+          <span class="steptag" data-es="Fin de la semana 4">End of week 4</span>
           <span class="stepink" aria-hidden="true">
             <svg viewBox="0 0 64 64" fill="none"><path d="M32 6 C 48 5, 59 16, 58 31 C 57 47, 46 58, 30 57 C 15 56, 5 45, 7 29 C 9 15, 19 8, 34 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
             <b>4</b>
@@ -456,9 +475,9 @@
   <!-- WHO IT'S FOR -->
   <section style="padding-top:0">
     <div class="wrap measure">
-      <span class="eyebrow">Who it's for</span>
-      <h2>Founder-led businesses where the founder is still the salesperson</h2>
-      <p class="lead">Freelancers, consultants and small founders who are good at the work but haven't built the habit of selling it. People with everything ready except the asking.</p>
+      <span class="eyebrow" data-es="Para quién es">Who it's for</span>
+      <h2 data-es="Negocios donde el fundador sigue siendo el vendedor">Founder-led businesses where the founder is still the salesperson</h2>
+      <p class="lead" data-es="Freelancers, consultores y fundadores pequeños que son buenos en su trabajo pero no han construido el hábito de venderlo. Gente que lo tiene todo listo menos el momento de pedir.">Freelancers, consultants and small founders who are good at the work but haven't built the habit of selling it. People with everything ready except the asking.</p>
     </div>
   </section>
 
@@ -466,8 +485,8 @@
   <section id="proof">
     <div class="wrap">
       <div class="proof-head">
-        <span class="eyebrow">Testimonials</span>
-        <h2>What clients say</h2>
+        <span class="eyebrow" data-es="Testimonios">Testimonials</span>
+        <h2 data-es="Lo que dicen los clientes">What clients say</h2>
       </div>
 
       <div class="carousel">
@@ -486,51 +505,51 @@
             <div class="car-quote active">
               <div class="car-top">
                 <div class="avatar" aria-hidden="true">K</div>
-                <div><div class="name">Kieran</div><div class="role">Agency founder, Ireland</div></div>
+                <div><div class="name">Kieran</div><div class="role" data-es="Fundador de agencia, Irlanda">Agency founder, Ireland</div></div>
                 <div class="stars" aria-hidden="true">★★★★★</div>
               </div>
-              <blockquote>"The impact was immediate, with tangible ROI from the very first call."</blockquote>
+              <blockquote data-es="«El impacto fue inmediato, con un ROI tangible desde la primera llamada.»">"The impact was immediate, with tangible ROI from the very first call."</blockquote>
             </div>
             <div class="car-quote">
               <div class="car-top">
                 <div class="avatar" aria-hidden="true">P</div>
-                <div><div class="name">Philipp</div><div class="role">Technical solutions engineer</div></div>
+                <div><div class="name">Philipp</div><div class="role" data-es="Ingeniero de soluciones técnicas">Technical solutions engineer</div></div>
                 <div class="stars" aria-hidden="true">★★★★★</div>
               </div>
-              <blockquote>"He has exceeded our expectations, becoming a mentor who has guided us in building an effective system."</blockquote>
+              <blockquote data-es="«Ha superado nuestras expectativas y se ha convertido en un mentor que nos ha guiado para construir un sistema eficaz.»">"He has exceeded our expectations, becoming a mentor who has guided us in building an effective system."</blockquote>
             </div>
             <div class="car-quote">
               <div class="car-top">
                 <div class="avatar" aria-hidden="true">G</div>
-                <div><div class="name">Georgie</div><div class="role">Freelance founder, London</div></div>
+                <div><div class="name">Georgie</div><div class="role" data-es="Fundadora freelance, Londres">Freelance founder, London</div></div>
                 <div class="stars" aria-hidden="true">★★★★★</div>
               </div>
-              <blockquote>"Within a couple of sessions I've gained focus and have started conversations with potential clients."</blockquote>
+              <blockquote data-es="«En un par de sesiones gané foco y empecé conversaciones con clientes potenciales.»">"Within a couple of sessions I've gained focus and have started conversations with potential clients."</blockquote>
             </div>
             <div class="car-quote">
               <div class="car-top">
                 <div class="avatar" aria-hidden="true">A</div>
-                <div><div class="name">Alexander</div><div class="role">Sustainability procurement</div></div>
+                <div><div class="name">Alexander</div><div class="role" data-es="Compras de sostenibilidad">Sustainability procurement</div></div>
                 <div class="stars" aria-hidden="true">★★★★★</div>
               </div>
-              <blockquote>"Matt immediately identified what was missing in my sales processes."</blockquote>
+              <blockquote data-es="«Matt identificó de inmediato lo que le faltaba a mis procesos de venta.»">"Matt immediately identified what was missing in my sales processes."</blockquote>
             </div>
             <div class="car-quote">
               <div class="car-top">
                 <div class="avatar" aria-hidden="true">L</div>
-                <div><div class="name">Lucas</div><div class="role">Founder, HR tech</div></div>
+                <div><div class="name">Lucas</div><div class="role" data-es="Fundador, tecnología de RR. HH.">Founder, HR tech</div></div>
                 <div class="stars" aria-hidden="true">★★★★★</div>
               </div>
-              <blockquote>"I highly recommend Matthew for his exceptional ability to set up a cold outbound strategy using state of the art technology."</blockquote>
+              <blockquote data-es="«Recomiendo mucho a Matthew por su capacidad excepcional para montar una estrategia de captación en frío con tecnología de última generación.»">"I highly recommend Matthew for his exceptional ability to set up a cold outbound strategy using state of the art technology."</blockquote>
             </div>
           </div>
           <div class="car-nav">
-            <button class="prev" type="button" aria-label="Previous testimonial">←</button>
-            <button class="next" type="button" aria-label="Next testimonial">→</button>
+            <button class="prev" type="button" aria-label="Previous testimonial" data-es-aria="Testimonio anterior">←</button>
+            <button class="next" type="button" aria-label="Next testimonial" data-es-aria="Siguiente testimonio">→</button>
           </div>
         </div>
       </div>
-      <p class="verified">Verified reviews on <a href="https://preply.com/en/tutor/7213674" target="_blank" rel="noopener">Preply</a> and <a href="https://www.linkedin.com/in/matthewpbarton/details/recommendations/" target="_blank" rel="noopener">LinkedIn</a>. Read them yourself.</p>
+      <p class="verified" data-es="Reseñas verificadas en &lt;a href=&quot;https://preply.com/en/tutor/7213674&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Preply&lt;/a&gt; y &lt;a href=&quot;https://www.linkedin.com/in/matthewpbarton/details/recommendations/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;LinkedIn&lt;/a&gt;. Léelas tú mismo.">Verified reviews on <a href="https://preply.com/en/tutor/7213674" target="_blank" rel="noopener">Preply</a> and <a href="https://www.linkedin.com/in/matthewpbarton/details/recommendations/" target="_blank" rel="noopener">LinkedIn</a>. Read them yourself.</p>
     </div>
   </section>
 
@@ -539,11 +558,11 @@
     <div class="wrap">
       <div class="watch-head">
         <div>
-          <span class="eyebrow">Watch video</span>
-          <h2>See what it looks like</h2>
+          <span class="eyebrow" data-es="Ver vídeo">Watch video</span>
+          <h2 data-es="Mira cómo se ve">See what it looks like</h2>
         </div>
-        <p class="support">Not a course. Not a framework. A short look at how this runs.</p>
-        <a class="btn" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl">Book a 15-minute fit call</span><span class="arw" aria-hidden="true">→</span></a>
+        <p class="support" data-es="No es un curso. No es un marco de trabajo. Un vistazo corto a cómo funciona esto.">Not a course. Not a framework. A short look at how this runs.</p>
+        <a class="btn" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl" data-es="Agenda una llamada de 15 minutos">Book a 15-minute fit call</span><span class="arw" aria-hidden="true">→</span></a>
       </div>
 
       <div class="watch-row">
@@ -559,38 +578,38 @@
   <!-- PRICING -->
   <section id="pricing" style="padding-top:0">
     <div class="wrap">
-      <span class="eyebrow">Pricing</span>
-      <h2>Two ways in</h2>
-      <p class="lead" style="margin-top:18px;max-width:46ch">Both start with the same 15-minute call. We decide together which one fits.</p>
+      <span class="eyebrow" data-es="Precios">Pricing</span>
+      <h2 data-es="Dos formas de empezar">Two ways in</h2>
+      <p class="lead" style="margin-top:18px;max-width:46ch" data-es="Las dos empiezan con la misma llamada de 15 minutos. Decidimos juntos cuál encaja.">Both start with the same 15-minute call. We decide together which one fits.</p>
       <div class="prices">
         <div class="price feature">
-          <span class="tag">The Four-Week Sprint · start here</span>
+          <span class="tag" data-es="El Sprint de cuatro semanas · empieza aquí">The Four-Week Sprint · start here</span>
           <span class="fig">$898</span>
-          <p>Four weeks of live execution. Deliberately compact. The selling happens in your business, between sessions.</p>
+          <p data-es="Cuatro semanas de ejecución en vivo. Deliberadamente compacto. La venta ocurre en tu negocio, entre sesiones.">Four weeks of live execution. Deliberately compact. The selling happens in your business, between sessions.</p>
           <details>
-            <summary>What you get, and how you pay</summary>
+            <summary data-es="Qué incluye y cómo se paga">What you get, and how you pay</summary>
             <ul>
-              <li>90-minute kickoff: goal, deadline, ten named leads, your offer written and priced live</li>
-              <li>One 60-minute working session a week for the next three weeks, with the asks made on the call</li>
-              <li>Daily check-in: one line from you each weekday, one reply from me within 24 hours</li>
-              <li>The shared board: goal, lead tracker, scripts and scoreboard, visible all week</li>
-              <li>The final count: a straight yes or no against the goal in week four</li>
+              <li data-es="Arranque de 90 minutos: objetivo, fecha límite, diez contactos con nombre, tu oferta escrita y con precio en vivo">90-minute kickoff: goal, deadline, ten named leads, your offer written and priced live</li>
+              <li data-es="Una sesión de trabajo de 60 minutos por semana durante las tres semanas siguientes, con las peticiones hechas en la llamada">One 60-minute working session a week for the next three weeks, with the asks made on the call</li>
+              <li data-es="Check-in diario: una línea tuya cada día laborable, una respuesta mía en menos de 24 horas">Daily check-in: one line from you each weekday, one reply from me within 24 hours</li>
+              <li data-es="El tablero compartido: objetivo, seguimiento de contactos, guiones y marcador, visible toda la semana">The shared board: goal, lead tracker, scripts and scoreboard, visible all week</li>
+              <li data-es="El recuento final: un sí o un no claro frente al objetivo en la semana cuatro">The final count: a straight yes or no against the goal in week four</li>
             </ul>
-            <p class="terms">Paid in full before the kickoff. I take on three Sprints at a time.</p>
-            <p class="terms">If the kickoff doesn't deliver, walk away and I refund half, no argument. You risk one session, not four weeks.</p>
+            <p class="terms" data-es="Se paga íntegro antes del arranque. Llevo tres Sprints a la vez.">Paid in full before the kickoff. I take on three Sprints at a time.</p>
+            <p class="terms" data-es="Si el arranque no cumple, te vas y te devuelvo la mitad, sin discusión. Arriesgas una sesión, no cuatro semanas.">If the kickoff doesn't deliver, walk away and I refund half, no argument. You risk one session, not four weeks.</p>
           </details>
         </div>
         <div class="price">
-          <span class="tag">Taster session</span>
+          <span class="tag" data-es="Sesión de prueba">Taster session</span>
           <span class="fig">$89</span>
-          <p>Not sure yet? Start smaller.</p>
+          <p data-es="¿Aún no lo tienes claro? Empieza más pequeño.">Not sure yet? Start smaller.</p>
           <details>
-            <summary>What you get, and how you pay</summary>
+            <summary data-es="Qué incluye y cómo se paga">What you get, and how you pay</summary>
             <ul>
-              <li>One 90-minute working session: clarity plus your first asks</li>
-              <li>Credited against the Sprint if you start within 14 days</li>
+              <li data-es="Una sesión de trabajo de 90 minutos: claridad y tus primeras peticiones">One 90-minute working session: clarity plus your first asks</li>
+              <li data-es="Se descuenta del Sprint si empiezas en los 14 días siguientes">Credited against the Sprint if you start within 14 days</li>
             </ul>
-            <p class="terms">Paid in full at booking.</p>
+            <p class="terms" data-es="Se paga íntegro al reservar.">Paid in full at booking.</p>
           </details>
         </div>
       </div>
@@ -600,10 +619,10 @@
   <!-- CLOSE -->
   <section class="close on-night" id="book">
     <div class="wrap">
-      <span class="script">One question on the call</span>
-      <h2>What's the ask you've been avoiding?</h2>
-      <p>We start there. Fifteen minutes, no deck, no pitch.</p>
-      <a class="btn light" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl">Book a 15-minute fit call</span><span class="arw" aria-hidden="true">→</span></a>
+      <span class="script" data-es="Una pregunta en la llamada">One question on the call</span>
+      <h2 data-es="¿Cuál es la petición que has estado evitando?">What's the ask you've been avoiding?</h2>
+      <p data-es="Empezamos por ahí. Quince minutos, sin presentación, sin pitch.">We start there. Fifteen minutes, no deck, no pitch.</p>
+      <a class="btn light" href="https://calendly.com/mbartonco/meet-with-matthew" target="_blank" rel="noopener"><span class="lbl" data-es="Agenda una llamada de 15 minutos">Book a 15-minute fit call</span><span class="arw" aria-hidden="true">→</span></a>
     </div>
   </section>
 
@@ -613,7 +632,7 @@
   <div class="wrap">
     <span class="name"><img src="assets/mbco-mark.jpg" alt="MB &amp; Co." width="28" height="28">&copy; 2026 Matthew Barton</span>
     <div class="links">
-      <a href="mailto:matthew@mbarton.co.uk">Email</a>
+      <a href="mailto:matthew@mbarton.co.uk" data-es="Correo">Email</a>
       <a href="https://www.linkedin.com/in/matthewpbarton/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
@@ -632,6 +651,48 @@
   }
   document.querySelector('.car-nav .prev').addEventListener('click',function(){show(i-1);});
   document.querySelector('.car-nav .next').addEventListener('click',function(){show(i+1);});
+})();
+(function(){
+  var STORE='mb-lang';
+  var META={
+    en:{lang:'en-GB',
+        title:'The Four-Week Sales Sprint | Matthew Barton',
+        desc:'A four-week sprint for founder-led businesses. Not coaching, not more strategy. Live execution, done together.'},
+    es:{lang:'es',
+        title:'El Sprint de Ventas de Cuatro Semanas | Matthew Barton',
+        desc:'Un sprint de cuatro semanas para negocios liderados por su fundador. No es coaching ni más estrategia. Ejecución en vivo, hecha juntos.'}
+  };
+  var nodes=[].slice.call(document.querySelectorAll('[data-es]')),
+      arias=[].slice.call(document.querySelectorAll('[data-es-aria]')),
+      buttons=[].slice.call(document.querySelectorAll('[data-setlang]')),
+      descTag=document.querySelector('meta[name="description"]');
+  nodes.forEach(function(el){el._en=el.innerHTML;});
+  arias.forEach(function(el){el._enAria=el.getAttribute('aria-label');});
+
+  function apply(lang){
+    var es=(lang==='es');
+    nodes.forEach(function(el){el.innerHTML = es ? el.dataset.es : el._en;});
+    arias.forEach(function(el){el.setAttribute('aria-label', es ? el.dataset.esAria : el._enAria);});
+    document.documentElement.lang=META[lang].lang;
+    document.title=META[lang].title;
+    if(descTag) descTag.setAttribute('content',META[lang].desc);
+    buttons.forEach(function(b){
+      var on=(b.dataset.setlang===lang);
+      b.classList.toggle('active',on);
+      b.setAttribute('aria-pressed',on?'true':'false');
+    });
+    try{localStorage.setItem(STORE,lang);}catch(e){}
+  }
+
+  var param=(location.search.match(/[?&]lang=(es|en)/i)||[])[1],
+      saved=null;
+  try{saved=localStorage.getItem(STORE);}catch(e){}
+  var auto=/^es/i.test(navigator.language||'')?'es':'en';
+  apply(String(param||saved||auto).toLowerCase()==='es'?'es':'en');
+
+  buttons.forEach(function(b){
+    b.addEventListener('click',function(){apply(b.dataset.setlang);});
+  });
 })();
 (function(){
   var h=document.querySelector('header');
